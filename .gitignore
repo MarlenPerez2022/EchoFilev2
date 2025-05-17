@@ -1,0 +1,7 @@
+vosk-model-es-0.42/
+venv/
+.venv/
+_pycache_/
+*.pyc
+-idea/
+.DS_Store
