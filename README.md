@@ -36,4 +36,4 @@ EchoFilev2 es una herramienta de escritorio que integra:
 - Paquetes de Python:
   ```bash
   pip install vosk numpy pillow tkcalendar mysql-connector-python pyaudio
-
+- **Instalar vosk-model-es-0.42 para usar la libreria de Vosk y integrarla dentro del proyecto
