@@ -6,7 +6,8 @@ from PIL import Image, ImageTk
 from PIL.Image import Resampling
 import subprocess
 
-def main():
+def crear_inicio():
+    usuario_obtenido = None
     # ——— Hack para importar el controlador ———
     parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     if parent_dir not in sys.path:
@@ -106,6 +107,7 @@ def main():
 
     # Lógica de inicio de sesión
     def iniciar_sesion():
+        nonlocal usuario_obtenido
         u = usuario_entry.get().strip()
         p = contrasena_entry.get().strip()
         if not u or not p:
@@ -124,9 +126,8 @@ def main():
         error_label.config(text="")  # limpia el mensaje de error al entrar
 
         # --- SOLO si el login es correcto, ejecuta esto ---
-        usuario = u
-        ruta = os.path.join(os.path.dirname(__file__), "MenuPrincipalV.py")
-        subprocess.run([sys.executable, ruta, usuario])
+
+        usuario_obtenido = u
         ventanaInicio.destroy()
 
     # Botón INICIO DE SESIÓN
@@ -143,7 +144,10 @@ def main():
     ventanaInicio.logo_tk = logo_tk
     ventanaInicio.med_tk  = med_tk
 
+
     ventanaInicio.mainloop()
+    return usuario_obtenido
 
 if __name__ == "__main__":
-    main()
+    usuario = crear_inicio()
+    print("Login exitoso:", usuario)

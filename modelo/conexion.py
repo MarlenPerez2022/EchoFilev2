@@ -3,7 +3,7 @@ from mysql.connector import Error
 
 class Conexion:
     """Maneja la conexión a la base de datos MySQL."""
-    def __init__(self, host='localhost', user='root', password='1234', database='echofile_db'):
+    def __init__(self, host='localhost', user='root', password='1234', database='echofilev2'):
         self.host = host
         self.user = user
         self.password = password

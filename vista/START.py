@@ -5,9 +5,18 @@ import os
 import sys
 import subprocess
 
+#  ————— Inserta la carpeta raíz del proyecto en sys.path —————
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+#  —————————————————————————————————————————————————————————————
 carpeta_actual = os.path.dirname(os.path.abspath(__file__))
 logo_path = os.path.join(carpeta_actual, "..", "imagenes", "EchoFileOficial.png")
 logo_path = os.path.abspath(logo_path)
+
+from vista.InicioV import crear_inicio
+from vista.MenuPrincipalV import mostrar_menu
+
 
 # Mensajes que van apareciendo durante la carga
 MENSAJES = [
@@ -18,15 +27,13 @@ MENSAJES = [
     "¡Listo para comenzar!"
 ]
 
-# Función para lanzar InicioV.py
-def abrir_inicioV():
-    inicio_path = os.path.join(carpeta_actual, "InicioV.py")
-    subprocess.run([sys.executable, inicio_path])
+
 
 # Al completar la carga, destruye splash y abre la app principal
 def launch_main_app():
     splash.destroy()
-    abrir_inicioV()
+    usuario = crear_inicio()
+    mostrar_menu(usuario)
 
 # —————— Splash Window ——————
 splash = tk.Tk()
@@ -155,3 +162,4 @@ def update_progress(step=[0]):
 # ejecutar animación tras un breve delay
 splash.after(200, update_progress)
 splash.mainloop()
+
