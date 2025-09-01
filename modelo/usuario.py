@@ -52,3 +52,20 @@ class Usuario:
             }
         else:
             return None
+
+    @staticmethod
+    def actualizar(id_usuario, nombre, usuario, contrasena):
+        # Ejemplo usando tu conexión a BD:
+          con = Conexion()
+          conn = con.conectar()
+          cursor = conn.cursor()
+          sql = """
+                  UPDATE usuario
+                  SET nombre   = %s,
+                      usuario  = %s,
+                      contrasena = %s
+                  WHERE id = %s \
+                  """
+          cursor.execute(sql, (nombre, usuario, contrasena, id_usuario))
+          conn.commit()
+          cursor.close()

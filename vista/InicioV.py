@@ -96,14 +96,15 @@ def crear_inicio():
     canvas.create_window(center_y, top_y+260, window=error_label, anchor="center")
 
     # Label "¿Olvidaste contraseña?" sin fondo blanco
-    olvido_label = tk.Label(
-        ventanaInicio,
-        text="¿Olvidaste contraseña?",
-        font=("Arial", 11, "italic"),
-        fg="black",
-        bg="#eaf6fa"
-    )
-    canvas.create_window(center_y, top_y+295, window=olvido_label, anchor="center")
+    #olvido_label = tk.Label(
+    #    ventanaInicio,
+    #    text="¿Olvidaste contraseña?",
+    #   font=("Arial", 11, "italic"),
+    #   fg="black",
+    #    bg="#eaf6fa"
+    #)
+    #canvas.create_window(center_y, top_y+295, window=olvido_label, anchor="center")
+
 
     # Lógica de inicio de sesión
     def iniciar_sesion():
